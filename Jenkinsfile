@@ -19,7 +19,7 @@ pipeline {
         stage('updating the cluster with helm charts configurations') {
             steps {
             
-                sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic '
+                sh '/usr/local/bin/helm upgrade --install petclinic-app helm/petclinic '
 
             }
 	}
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
 
-                sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic --set.image.repository=registry.hub.docker.com/suresh195/petclinic --set.image.tag=1'
+                sh '/usr/local/bin/helm upgrade --install petclinic-app helm/petclinic --set.image.repository=registry.hub.docker.com/suresh195/petclinic --set.image.tag=1'
             }
         }
         }
