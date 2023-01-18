@@ -2,6 +2,7 @@ pipeline {
 	agent any
 	environment {
 		dockerhub = credentials('dockerhub')
+	}
     stages {
         stage('Build on k8 ') {
             steps {           
