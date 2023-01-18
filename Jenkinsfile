@@ -12,7 +12,7 @@ pipeline {
     stages {      
         stage('checkout ') {
             steps { 
-                git '
+                git 'https://github.com/BandiSuresh85/petclinic.git'
             }
         }
 
