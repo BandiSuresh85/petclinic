@@ -22,6 +22,7 @@ pipeline {
                 sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic '
 
             }
+	}
         stage('pulling the code from dockerhub and run as a pod by using helmchart') {
             steps {
                 sh 'docker login -u $dockerhub_usr -p $dockerhub_psw '
