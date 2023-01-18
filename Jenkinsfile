@@ -7,7 +7,7 @@ pipeline {
       jdk 'JDK8'
     }
     environment {
-		dockerhub = credentials('dockerhub')
+		dockerhub = credentials('docker_login')
 	}
     stages {      
         stage('checkout ') {
@@ -25,7 +25,7 @@ pipeline {
 	}
         stage('pulling the code from dockerhub and run as a pod by using helmchart') {
             steps {
-                sh 'docker login -u $dockerhub_usr -p $dockerhub_psw '
+                sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
 
                 sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic --set.image.repository=registry.hub.docker.com/suresh195/petclinic --set.image.tag=1'
             }
